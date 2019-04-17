@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
 	user: null,
 	photos: [],
+  new: null,
   },
   mutations: {
 	setUser(state, user) {//Here
@@ -16,6 +17,9 @@ export default new Vuex.Store({
 	setPhotos(state, photos) {
 	  state.photos = photos;
 	},
+  setnew(state, photo) {
+    state.new = photo;
+  }
   },
   actions: {
 	async register(context, data) {

@@ -12,9 +12,6 @@
             <input v-model="title" placeholder="Title">
             <p></p>
             <textarea v-model="description" placeholder="Description"></textarea>
-            <p></p>
-            <input type="file" name="photo" @change="fileChanged">
-            <p></p>
             <button type="button" @click="close" class="pure-button">Close</button>
             <button type="submit" class="pure-button pure-button-secondary">Upload</button>
           </form>
@@ -35,28 +32,22 @@ export default {
     return {
       title: '',
       description: '',
-      file: null,
       error: '',
     }
   },
   methods: {
-  fileChanged(event) {
-    this.file = event.target.files[0]
-  },
   close() {
     this.$emit('escape');
   },
   async upload() {
       try {
         const formData = new FormData();
-        formData.append('photo', this.file, this.file.name);
         formData.append('title', this.title);
         formData.append('description', this.description);
         this.error = await this.$store.dispatch("upload", formData);
         if (!this.error) {
           this.title = '';
           this.description = '';
-          this.file = null;
           this.$emit('uploadFinished');
         }
       } catch (error) {

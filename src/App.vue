@@ -4,11 +4,14 @@
     <img class="logoimg" src="../public/delight.png">
     <span class="pure-menu-heading">Granny Writers</span>
     <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <router-link to="/newest" class="pure-menu-link">Newest</router-link>
+    </li>
       <li class="pure-menu-item">
         <router-link to="/" class="pure-menu-link">All Stories</router-link>
       </li>
       <li class="pure-menu-item">
-        <router-link to="/mypage" class="pure-menu-link">My Page</router-link>
+        <router-link to="/mypage" class="pure-menu-link">Profile</router-link>
       </li>
     </ul>
   </div>
@@ -45,7 +48,7 @@
   /* display: inline-block; */
   /* Or set the width explicitly: */
   text-align: left;
-  background: #F2385A;
+  background: #C9CEFF;
   max-width: 15em;
 }
 
@@ -53,7 +56,7 @@
   color: #fff;
   font-size: 1.2em;
   padding: 20px 20px;
-  background-color: #F2385A;
+  background-color: #C9CEFF;
   margin-bottom: 10px;
 }
 
@@ -64,12 +67,12 @@
 }
 
 .pure-menu-link:hover {
-  background: #333;
+  background: #707FB3;
 }
 
 .pure-menu-link.router-link-exact-active {
   background: #fff;
-  color: #F2385A;
+  color: #707FB3;
 }
 
 .content {

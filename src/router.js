@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Register from './views/Register.vue'
 import MyPage from './views/MyPage.vue'
 import Login from './views/Login.vue'
+import Newest from './views/Newest.vue'
 
 Vue.use(Router)
 
@@ -29,7 +30,12 @@ export default new Router({
 		{
 			path: '/login',
 			name: 'login',
-			component: Login
+			component: Login,
+		},
+		{
+			path: '/newest',
+			name: 'newest',
+			component: Newest,
 		},
 	]
 })
