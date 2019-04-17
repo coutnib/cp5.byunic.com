@@ -20,10 +20,10 @@ userSchema.pre('save', async function(next) {
 	try {
 		// generate a salt
 	        const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
-	
+
 	       // hash the password along with our new salt
 	       const hash = await bcrypt.hash(this.password, salt);
-	
+
 	       // override the plaintext password with the hashed one
 	       this.password = hash;
 	       next();
@@ -32,7 +32,7 @@ userSchema.pre('save', async function(next) {
 		next(error);
 	}
 });
-	
+
 userSchema.methods.comparePassword = async function(password) {
 	try {
 		const isMatch = await bcrypt.compare(password, this.password);
@@ -41,18 +41,18 @@ userSchema.methods.comparePassword = async function(password) {
 		return false;
 	}
 };
-	
+
 userSchema.methods.toJSON = function() {
 	var obj = this.toObject();
 	delete obj.password;
 	delete obj.tokens;
 	return obj;
 }
-	
+
 userSchema.methods.addToken = function(token) {
 	this.tokens.push(token);
 }
-	
+
 userSchema.methods.removeToken = function(token) {
 	this.tokens = this.tokens.filter(t => t != token);
 }
@@ -60,7 +60,7 @@ userSchema.methods.removeToken = function(token) {
 userSchema.methods.removeOldTokens = function() {
 	this.tokens = auth.removeOldTokens(this.tokens);
 }
-	
+
 // middleware to validate user account
 userSchema.statics.verify = async function(req, res, next) {
 	// look up user account
@@ -105,7 +105,7 @@ router.post('/', async (req, res) => {
 		return res.sendStatus(500);
 	}
 });
-	
+
 // login
 router.post('/login', async (req, res) => {
 	if (!req.body.username || !req.body.password)
@@ -132,23 +132,23 @@ router.post('/login', async (req, res) => {
 	        return res.sendStatus(500);
 	}
 });
-	
+
 async function login(user, res) {
 	let token = auth.generateToken({
 		id: user._id
 	}, "24h");
-	
+
 	user.removeOldTokens();
 	user.addToken(token);
 	await user.save();
-	
+
 	return res
 		.cookie("token", token, {
 	        	expires: new Date(Date.now() + 86400 * 1000)
 	        })
 		.status(200).send(user);
 }
-	
+
 // Logout
 router.delete("/", auth.verifyToken, User.verify, async (req, res) => {
 	req.user.removeToken(req.token);
@@ -161,7 +161,11 @@ router.delete("/", auth.verifyToken, User.verify, async (req, res) => {
 router.get('/', auth.verifyToken, User.verify, async (req, res) => {
 	return res.send(req.user);
 });
-		
+// Get all get all users to show Members
+router.getusers('/', auth.verifyToken, User.verify, async (req, res) => {
+	return res.send(req.users);
+});
+
 module.exports = {
 	model: User,
 	routes: router,

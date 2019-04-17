@@ -33,6 +33,7 @@ export default {
       title: '',
       description: '',
       error: '',
+      favorite: 'false',
     }
   },
   methods: {
@@ -48,6 +49,7 @@ export default {
         if (!this.error) {
           this.title = '';
           this.description = '';
+          this.favorite = 'false';
           this.$emit('uploadFinished');
         }
       } catch (error) {

@@ -5,6 +5,7 @@ import Register from './views/Register.vue'
 import MyPage from './views/MyPage.vue'
 import Login from './views/Login.vue'
 import Newest from './views/Newest.vue'
+import Members from './views/Members.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
 			path: '/newest',
 			name: 'newest',
 			component: Newest,
+		},
+		{
+			path: '/members',
+			name: 'members',
+			component: Members,
 		},
 	]
 })

@@ -22,6 +22,7 @@ const photoSchema = new mongoose.Schema({
   },
   title: String,
   description: String,
+  favorite: Boolean,
   created: {
     type: Date,
     default: Date.now

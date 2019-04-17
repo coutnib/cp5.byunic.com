@@ -17,7 +17,7 @@
     <image-gallery :photos="photos" />
   </div>
   <div v-else>
-    <p>If you would like to upload photos, please register for an account or login.</p>
+    <p>If you would like to upload stories, please register for an account or login.</p>
     <router-link to="/register" class="pure-button">Register</router-link> or
     <router-link to="/login" class="pure-button">Login</router-link>
   </div>
@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user;
+      return this.$store.state.users;
     },
     photos() {
       return this.$store.state.photos;

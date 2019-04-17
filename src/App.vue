@@ -5,13 +5,16 @@
     <span class="pure-menu-heading">Granny Writers</span>
     <ul class="pure-menu-list">
     <li class="pure-menu-item">
-      <router-link to="/newest" class="pure-menu-link">Newest</router-link>
+      <router-link to="/newest" class="pure-menu-link">Welcome</router-link>
     </li>
       <li class="pure-menu-item">
         <router-link to="/" class="pure-menu-link">All Stories</router-link>
       </li>
       <li class="pure-menu-item">
         <router-link to="/mypage" class="pure-menu-link">Profile</router-link>
+      </li>
+      <li class="pure-menu-item">
+        <router-link to="/members" class="pure-menu-link">Checker</router-link>
       </li>
     </ul>
   </div>
@@ -34,6 +37,7 @@
   font-size: 18px;
   display: flex;
   min-height: 100%;
+  background-color: #FFDDD4;
 }
 .logoimg {
   display: block;
@@ -71,7 +75,7 @@
 }
 
 .pure-menu-link.router-link-exact-active {
-  background: #fff;
+  background: #FFDDD4;
   color: #707FB3;
 }
 
