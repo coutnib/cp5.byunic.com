@@ -1,10 +1,12 @@
 <template>
 <div>
-  <div class="story" v-for="story in stories" v-bind:key="story._id">
-    <img :src="story.path" />
-    <p class="storyTitle">{{story.title}}</p>
-    <p class="storyDate">{{formatDate(story.created)}}</p>
-    <p>{{story.description}}</p>
+  <div class="image" v-for="photo in photos" v-bind:key="photo._id">
+    <img :src="photo.path" />
+    <p class="photoTitle">{{photo.title}}</p>
+    <p class="photoDate">
+      <span v-if="photo.user.name">{{photo.user.name}}, </span>
+      {{formatDate(photo.created)}}
+    </p>
   </div>
 </div>
 </template>
@@ -13,9 +15,9 @@
 import moment from 'moment';
 
 export default {
-  name: 'StoryGallery',
+  name: 'ImageGallery',
   props: {
-    stories: Array
+    photos: Array
   },
   methods: {
     formatDate(date) {
@@ -29,12 +31,12 @@ export default {
 </script>
 
 <style scoped>
-.storyTitle {
+.photoTitle {
   margin: 0px;
   font-size: 1.2em;
 }
 
-.storyDate {
+.photoDate {
   margin: 0px;
   font-size: 0.9em;
   font-weight: normal;
@@ -44,13 +46,13 @@ p {
   margin: 0px;
 }
 
-.story {
+.image {
   margin: 0 0 1.5em;
   display: inline-block;
   width: 100%;
 }
 
-.story img {
+.image img {
   max-width: 600px;
   max-height: 600px;
   image-orientation: from-image;

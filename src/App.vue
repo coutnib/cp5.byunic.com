@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <div class="pure-menu">
-    <img class="logoimg" src="../public/images/delight.png">
+    <img class="logoimg" src="../public/delight.png">
     <span class="pure-menu-heading">Granny Writers</span>
     <ul class="pure-menu-list">
       <li class="pure-menu-item">

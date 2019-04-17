@@ -6,14 +6,6 @@ app.use(bodyParser.urlencoded({
 	  extended: false
 }));
 
-const multer = require('multer')
-const upload = multer({
-  dest: '/var/www/lab5.byunic.com/images/',
-  limits: {
-    fileSize: 10000000
-  }
-});
-
 const mongoose = require('mongoose');
 
 // connect to the database
@@ -27,7 +19,8 @@ const mongoose = require('mongoose');
    const users = require("./users.js");
    app.use("/api/users", users.routes);
 
-   const stories = require("./stories.js");
-   app.use("/api/stories", stories.routes);
+	 const photos = require("./photos.js");
+	 app.use("/api/photos", photos.routes);
+
 
    app.listen(3003, () => console.log('Server listening on port 3003'));

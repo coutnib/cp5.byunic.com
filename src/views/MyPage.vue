@@ -12,12 +12,11 @@
         </p>
       </div>
     </div>
-    <escape-event @escape="escape"></escape-event>
     <uploader :show="show" @escape="escape" @uploadFinished="uploadFinished" />
-    <story-gallery :stories="stories" />
+    <image-gallery :photos="photos" />
   </div>
   <div v-else>
-    <p>If you would like to upload a story, please register for an account or login.</p>
+    <p>If you would like to upload photos, please register for an account or login.</p>
     <router-link to="/register" class="pure-button">Register</router-link> or
     <router-link to="/login" class="pure-button">Login</router-link>
   </div>
@@ -27,14 +26,14 @@
 <script>
 import EscapeEvent from '@/components/EscapeEvent.vue'
 import Uploader from '@/components/Uploader.vue'
-import StoryGallery from '@/components/StoryGallery.vue'
+import ImageGallery from '@/components/ImageGallery.vue'
 
 export default {
   name: 'mypage',
   components: {
     EscapeEvent,
     Uploader,
-    StoryGallery,
+    ImageGallery,
   },
   data() {
     return {
@@ -45,13 +44,13 @@ export default {
     user() {
       return this.$store.state.user;
     },
-    stories() {
-      return this.$store.state.stories;
-    }
+    photos() {
+      return this.$store.state.photos;
+    },
   },
-   created() {
-    this.$store.dispatch("getUser");
-    this.$store.dispatch("getMyStories");
+  async created() {
+    await this.$store.dispatch("getUser");
+    await this.$store.dispatch("getMyPhotos");
   },
   methods: {
     async logout() {
@@ -70,7 +69,7 @@ export default {
     async uploadFinished() {
       this.show = false;
       try {
-        this.error = await this.$store.dispatch("getMyStories");
+        this.error = await this.$store.dispatch("getMyPhotos");
       } catch (error) {
         console.log(error);
       }

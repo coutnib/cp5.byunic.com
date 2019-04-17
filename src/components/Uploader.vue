@@ -13,7 +13,7 @@
             <p></p>
             <textarea v-model="description" placeholder="Description"></textarea>
             <p></p>
-            <input type="file" name="story" @change="fileChanged">
+            <input type="file" name="photo" @change="fileChanged">
             <p></p>
             <button type="button" @click="close" class="pure-button">Close</button>
             <button type="submit" class="pure-button pure-button-secondary">Upload</button>
@@ -49,11 +49,7 @@ export default {
   async upload() {
       try {
         const formData = new FormData();
-        if (!this.file){
-	   formData.append('story', this.file, null);
-       } else {
-           formData.append('story', this.file, this.file.name);
-       }
+        formData.append('photo', this.file, this.file.name);
         formData.append('title', this.title);
         formData.append('description', this.description);
         this.error = await this.$store.dispatch("upload", formData);
@@ -66,8 +62,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-   },
- },
+    },
+  },
 }
 </script>
 
