@@ -4,9 +4,10 @@
     <img :src="photo.path" />
     <p class="photoTitle">{{photo.title}}</p>
     <p class="photoDate">
-      <span v-if="photo.user.name">{{photo.user.name}}, </span>
-      {{formatDate(photo.created)}}
+	<span v-if="photo.user.name">{{photo.user.name}}, </span>
+	{{formatDate(photo.created)}}
     </p>
+    <p>{{photo.description}}</p>
   </div>
 </div>
 </template>

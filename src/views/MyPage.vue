@@ -12,6 +12,7 @@
         </p>
       </div>
     </div>
+    <escape-event @escape="escape"></escape-event>
     <uploader :show="show" @escape="escape" @uploadFinished="uploadFinished" />
     <image-gallery :photos="photos" />
   </div>
@@ -31,9 +32,9 @@ import ImageGallery from '@/components/ImageGallery.vue'
 export default {
   name: 'mypage',
   components: {
-    EscapeEvent,
     Uploader,
     ImageGallery,
+    EscapeEvent,
   },
   data() {
     return {
@@ -53,6 +54,14 @@ export default {
     await this.$store.dispatch("getMyPhotos");
   },
   methods: {
+    async uploadFinished() {
+      this.show = false;
+      try {
+        this.error = await this.$store.dispatch("getMyPhotos");
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async logout() {
       try {
         this.error = await this.$store.dispatch("logout");
@@ -65,14 +74,6 @@ export default {
     },
     toggleUpload() {
       this.show = true;
-    },
-    async uploadFinished() {
-      this.show = false;
-      try {
-        this.error = await this.$store.dispatch("getMyPhotos");
-      } catch (error) {
-        console.log(error);
-      }
     },
   },
 }

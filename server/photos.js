@@ -83,8 +83,6 @@ router.get("/all", async (req, res) => {
   }
 });
 
-
-
 module.exports = {
   model: Photo,
   routes: router,
