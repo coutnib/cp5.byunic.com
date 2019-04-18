@@ -8,7 +8,6 @@ export default new Vuex.Store({
   state: {
 	user: null,
 	photos: [],
-  favorite: null,
   },
   mutations: {
 	setUser(state, user) {//Here
@@ -17,10 +16,7 @@ export default new Vuex.Store({
 	setPhotos(state, photos) {
 	  state.photos = photos;
 	},
-  setFav(state, favorite) {
-    state.favorite = favorite;
-  }
-  },
+},
   actions: {
 	async register(context, data) {
 		try {

@@ -28,7 +28,6 @@
 import EscapeEvent from '@/components/EscapeEvent.vue'
 import Uploader from '@/components/Uploader.vue'
 import ImageGallery from '@/components/ImageGallery.vue'
-
 export default {
   name: 'mypage',
   components: {
@@ -43,7 +42,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.users;
+      return this.$store.state.user;
     },
     photos() {
       return this.$store.state.photos;
@@ -83,13 +82,11 @@ export default {
 .header {
   display: flex;
 }
-
 .header a {
   padding-left: 50px;
   color: #222;
   font-size: 2em;
 }
-
 .header svg {
   margin-top: 12px;
 }

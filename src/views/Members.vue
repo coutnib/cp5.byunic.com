@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3>Edit your story here before you post it!</h3>
+  <h3>Check your story here before you post it!</h3>
   <form>
     <input placeholder="Title" class="title">
     <p></p>

@@ -2,9 +2,9 @@
 <div>
   <div class="image" v-for="photo in photos" v-bind:key="photo._id">
     <p class="photoTitle">{{photo.title}}</p>
-    </br>
+    <br/>
     <p>{{photo.description}}</p>
-    </br>
+    <br/>
     <p class="photoDate">
 	<span v-if="photo.user.name">{{photo.user.name}}, </span>
 	{{formatDate(photo.created)}}
